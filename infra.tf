@@ -13,7 +13,6 @@ provider "linode" {
 
 locals {
     root_dir = "${abspath(path.root)}"
-    k8s_config_dir = "${local.root_dir}/.kube/"
     k8s_config_file = "${local.root_dir}/.kube/kubeconfig.yaml"
 }
 
@@ -23,9 +22,9 @@ variable "linode_api_token" {
 }
 
 resource "linode_lke_cluster" "terraform_k8s" {
-    k8s_version="1.25"
+    k8s_version="1.30"
     label="terraform-k8s"
-    region="us-east"
+    region="us-ord"
     tags=["terraform-k8s"]
     pool {
         type  = "g6-standard-1"
